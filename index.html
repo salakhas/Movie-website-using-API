@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Movie Api</title>
     <style>
-        
+        .spec{
+            font-family: 'Architects Daughter', cursive;
+            font-family: 'Balsamiq Sans', cursive;
+        }
         .moveLeft{
             margin-left: 300px;
         }
@@ -88,8 +91,12 @@
                     displayMovie(res)
                 })
                 .catch(function(err){
-                    //throw error
+                    alert('Invalid Movie Name')
+                    invalidMovie();
                 })
+            }
+            else{
+                alert('Enter a movie name');
             }
         }
 
@@ -153,7 +160,20 @@
             
         }
 
+        function invalidMovie(){
+            let container = document.getElementById("container");
+            let div = document.createElement('div');
+            let image = document.createElement('img')
+            image.src = "https://media1.giphy.com/media/SVqgwI1EIrjLfZyyfD/giphy.gif";
+            image.style.display = "block";
+            image.setAttribute('class','myImage ml-4')
 
+            let sorryMsg = document.createElement('p');
+            sorryMsg.innerHTML="The movie you are looking for is not available."
+            sorryMsg.setAttribute('class','h6 mt-3 spec');
+            div.append(image,sorryMsg)
+            container.append(div)
+        }
     </script>
 </body>
 </html>
