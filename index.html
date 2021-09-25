@@ -42,6 +42,11 @@
         .centerSpace{
             margin-left: 450px;
         }
+        .recomImg{
+            width: 150px;
+            height: 50px;
+            
+        }
     </style>
 </head>
 <body>
@@ -153,10 +158,24 @@
                 let released = document.createElement("p");
                 released.innerHTML = `Released on: ${data.Released}`;
                 released.setAttribute('class','h6 mt-3')
-              
-                innerDiv.append(moviePoster,movieName,type,genre,rating,year,actors,released,breaker)
 
+                let rec = document.createElement("img");
+                rec.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwQRIlk2RlR1rZZx_segpjHZeR_cUR2Y7JhQ&usqp=CAU";
+                rec.setAttribute('class','recomImg')
+              
+                var ratingValue = data.Ratings[0].Value;
+                let arr = ratingValue.split('/');
+                console.log(arr[0])
+                if(arr[0] > 8.5){
+                   
+                    innerDiv.append(rec,moviePoster,movieName,type,genre,rating,year,actors,released,breaker)
+                }
+                else{
+                    innerDiv.append(moviePoster,movieName,type,genre,rating,year,actors,released,breaker)
+                }
                 container.append(innerDiv)
+                
+
             
         }
 
